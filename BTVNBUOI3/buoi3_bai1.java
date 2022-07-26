@@ -1,0 +1,101 @@
+import java.util.Scanner;
+
+public class buoi3_bai1 {
+    public static Scanner scanner = new Scanner(System.in);
+
+    public static void Nhap(int a[], int n) {
+        for (int i = 0; i < n; i++) {
+            System.out.printf(" a[" + i + "] = ");
+            a[i] = scanner.nextInt();
+        }
+    }
+
+    public static void Xuat(int a[], int n) {
+        for (int i = 0; i < n; i++) {
+            System.out.println(a[i] + " ");
+        }
+    }
+
+    public static float tbc(int a[], int n) {
+        float sum = 0;
+        float dem = 0;
+        for (int i = 0; i <= n; i = i + 2) {
+            if (a[i] % 2 != 0) {
+                sum += a[i];
+                dem++;
+            }
+        }
+        return sum / dem;
+    }
+
+    public static void vitrimin(int a[], int n) {
+        int Min = a[0];
+        for (int i = 1; i < n; i++) {
+            if (Min > a[i]) {
+                Min = a[i];
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            if (a[i] == Min)
+                System.out.print((i + 1) + " ");
+        }
+    }
+
+    public static boolean ktscp(double n) {
+        double c = Math.sqrt(n);
+        return (c - Math.floor(c) == 0);
+    }
+
+    public static void scp(int a[], int n) {
+        for (int i = 0; i < n; i++) {
+            if (ktscp(a[i]) == true)
+                System.out.print(a[i] + " ");
+        }
+    }
+
+    public static boolean ktsnt(double n) {
+        for(int i = 2; i < n; i++) {
+            if(n % i == 0)
+                return false;
+        }
+        return n >= 2;
+    }
+
+    public static void snt(int a[], int n) {
+        for (int i = 0; i < n; i++) {
+            if (ktsnt(a[i]) == true)
+                System.out.println(a[i] + " ");
+        }
+    }
+    public static void sapxep(int a[], int n) {
+        int temp;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (a[i] > a[j]) {
+                    temp = a[i];
+                    a[i] = a[j];
+                    a[j] = temp;
+                }
+            }
+        }
+    }
+
+    public static void main (String[]args){
+        System.out.println("Nhap vao so phan tu cua mang: ");
+        int n = scanner.nextInt();
+        int a[] = new int[n];
+        Nhap(a, n);
+        System.out.println("Mang vua nhap: ");
+        Xuat(a, n);
+        System.out.println("TBC: " + tbc(a, n));
+        System.out.println("Vi tri so nho nhat trong mang: ");
+        vitrimin(a, n);
+        System.out.println("\nSo chinh phuong co trong mang: ");
+        scp(a, n);
+        System.out.println("\nSo nguyen to co trong mang: ");
+        snt(a, n);
+        System.out.println("Mang sau khi sap xep: ");
+        sapxep(a, n);
+        Xuat(a, n);
+    }
+}
